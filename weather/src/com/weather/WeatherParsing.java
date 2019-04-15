@@ -28,7 +28,7 @@ public class WeatherParsing {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd"); // 날짜 데이터 포멧 형태지정
         String todayDate = sdf.format(cal.getTime());
 
-        String alamTime = "0600"; // 조회하고 싶은 시간대 지정
+        String alamTime = "0800"; // 조회하고 싶은 시간대 지정
         // 0200, 0500, 0800, 1100, 1400, 1700, 2000, 2300 (1일 8회 제한)
         
         String serviceKey = "gjacaWQfv4ZtfFSgJrq5FaCGNJrQCVWaila1%2F%2BY66oOEUkrrmMh7YgG57jCakEhXN1C1PA2r5zmISvqkZYqq%2FQ%3D%3D";
