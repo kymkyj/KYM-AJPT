@@ -95,7 +95,7 @@ public class WeatherParsing {
         String sido = "서울";
         
         try {
-            sido = URLEncoder.encode(sido, "UTF8");  
+            sido = URLEncoder.encode(sido, "UTF8");    
 
         } catch (Exception e) {
             e.printStackTrace();
