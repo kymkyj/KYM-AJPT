@@ -3,6 +3,7 @@ package com.weather;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -76,7 +77,7 @@ public class WeatherParsing {
                 category = (String) weather.get("category");
 
                 if (category.equals(CATEGORY_POP)) {
-                    gangSu = value;
+                    gangSu = value; // 강수량 데이터만 가져옴
                 }
             }
             String rs = WeatherUtil.sendTelegram(WeatherUtil.makeMsg(gangSu));
@@ -91,7 +92,14 @@ public class WeatherParsing {
         
         // 미세먼지 체크
         
-        String sido = "서울";  
+        String sido = "서울";
+        
+        try {
+            sido = URLEncoder.encode(sido, "UTF8");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         
         String urlMise = "http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty?sidoName=" + sido + "&pageNo=1&numOfRows=10&ServiceKey=" + serviceKey + "&ver=1.3&_returnType=json";
         
@@ -111,11 +119,12 @@ public class WeatherParsing {
             JSONObject obj = (JSONObject) parser.parse(result);
             
             JSONArray item = (JSONArray) obj.get("list");
+            System.out.println("item :"+item);
             JSONObject miseDosi = (JSONObject) item.get(0);
             // 공공데이터 포탈에서 던져주는 데이터가 배열형태로 도시대기인 0번째 값을 기준으로 함
             
-            int miseGrade = Integer.parseInt((String)miseDosi.get("pm10Grade"));
-            double miseValue = Double.parseDouble((String)miseDosi.get("pm10Value"));
+            int miseGrade = Integer.parseInt((String)miseDosi.get("pm10Grade")); // 미세먼지 등급
+            double miseValue = Double.parseDouble((String)miseDosi.get("pm10Value")); // 미세먼지 수치
             
             String rs = WeatherUtil.sendTelegram(WeatherUtil.makeMsg(miseGrade, miseValue));
             System.out.println("## 미세먼지 종료 ##");
