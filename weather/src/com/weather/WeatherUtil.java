@@ -6,6 +6,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 
+import javax.net.ssl.HttpsURLConnection;
+
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
@@ -38,29 +40,20 @@ public class WeatherUtil {
 		
 	}
 	
-    static String sendTelegram(String msg){
+    static void sendTelegram(String msg){
         try {
             String telegramUrl = "https://api.telegram.org/bot785529566:AAGJgIYz_uzbcogAVrrUEBjkq9gdxXF1JzU/sendmessage?chat_id=639995102&text=";
 
             URL url = new URL(telegramUrl + URLEncoder.encode(msg, "UTF8"));
 
-            StringBuilder result = new StringBuilder();
-
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            String line;
-            while ((line = br.readLine()) != null) {
-                result.append(line);
-            }
 
             br.close();
-
-            return result.toString();
+            
         }catch (Exception e){
             e.printStackTrace();
-
-            return null;
         }
     }
 

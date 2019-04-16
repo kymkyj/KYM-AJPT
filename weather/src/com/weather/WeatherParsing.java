@@ -17,19 +17,18 @@ public class WeatherParsing {
 		final String CATEGORY_POP = "POP";
 
 		// 서울 중구 기준 60 127
-		String nx = "60"; // 경도
-		String ny = "127"; // 위도
+		String nx = "60";
+		String ny = "127";
 
-		// 현재 날짜 가져오는 힘수
 		Calendar cal = Calendar.getInstance();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd"); 
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 		String todayDate = sdf.format(cal.getTime());
 
 		String alamTime = "0800"; // 조회하고 싶은 시간대 지정
 		// 0200, 0500, 0800, 1100, 1400, 1700, 2000, 2300 (1일 8회 제한)
 
 		String serviceKey = "gjacaWQfv4ZtfFSgJrq5FaCGNJrQCVWaila1%2F%2BY66oOEUkrrmMh7YgG57jCakEhXN1C1PA2r5zmISvqkZYqq%2FQ%3D%3D";
-		
+
 		String gangsuUrl = "http://newsky2.kma.go.kr/service/SecndSrtpdFrcstInfoService2/ForecastSpaceData?"
 				+ "serviceKey=" + serviceKey + "&base_date=" + todayDate + "&base_time=" + alamTime + "&nx=" + nx
 				+ "&ny=" + ny + "&_type=json";
@@ -41,7 +40,7 @@ public class WeatherParsing {
 		JSONObject wt_items = (JSONObject) wt_body.get("items");
 		JSONArray wt_item = (JSONArray) wt_items.get("item");
 
-		String category; 
+		String category;
 		JSONObject weather;
 
 		for (int i = 0; i < wt_item.size(); i++) {
@@ -54,8 +53,7 @@ public class WeatherParsing {
 				gangSu = value;
 			}
 		}
-		
-		
+
 		// 미세먼지 체크
 		String sido = "서울";
 
@@ -73,10 +71,10 @@ public class WeatherParsing {
 		JSONArray item = (JSONArray) miseObj.get("list");
 		JSONObject miseDosi = (JSONObject) item.get(0);
 
-		int miseGrade = Integer.parseInt((String) miseDosi.get("pm10Grade")); 
+		int miseGrade = Integer.parseInt((String) miseDosi.get("pm10Grade"));
 		double miseValue = Double.parseDouble((String) miseDosi.get("pm10Value"));
 
-		String rs = WeatherUtil.sendTelegram(WeatherUtil.makeMsg(gangSu, miseGrade, miseValue));
+		WeatherUtil.sendTelegram(WeatherUtil.makeMsg(gangSu, miseGrade, miseValue));
 
 		System.out.println("## 종료 ##");
 	}
