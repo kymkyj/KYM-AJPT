@@ -41,13 +41,13 @@ public class WeatherParsing {
         
         try {
             URL url = new URL(gangsuUrl); // 위 urlStr을 이용해서 URL 객체를 만들어줍니다.
-            BufferedReader bf;
+            BufferedReader br;
             String line = "";
             String result = "";
 
-            bf = new BufferedReader(new InputStreamReader(url.openStream()));
+            br = new BufferedReader(new InputStreamReader(url.openStream()));
 
-            while ((line = bf.readLine()) != null) {
+            while ((line = br.readLine()) != null) {
                 result = result.concat(line);
             }
 
@@ -79,11 +79,48 @@ public class WeatherParsing {
                     gangSu = value;
                 }
             }
-
             String rs = WeatherUtil.sendTelegram(WeatherUtil.makeMsg(gangSu));
-            System.out.println("## 종료 ##");
+            System.out.println("## 일기예보 종료 ##");
 
-            bf.close();
+            br.close();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        
+        
+        // 미세먼지 체크
+        
+        String sido = "서울";
+        
+        String urlMise = "http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty?sidoName=" + sido + "&pageNo=1&numOfRows=10&ServiceKey=" + serviceKey + "&ver=1.3&_returnType=json";
+        
+        try {
+            URL url = new URL(urlMise); // 위 urlStr을 이용해서 URL 객체를 만들어줍니다.
+            BufferedReader br;
+            String line = "";
+            String result = "";
+
+            br = new BufferedReader(new InputStreamReader(url.openStream()));
+
+            while ((line = br.readLine()) != null) {
+                result = result.concat(line);
+            }
+            
+            JSONParser parser = new JSONParser();
+            JSONObject obj = (JSONObject) parser.parse(result);
+            
+            JSONArray item = (JSONArray) obj.get("list");
+            JSONObject miseDosi = (JSONObject) item.get(0);
+            // 공공데이터 포탈에서 던져주는 데이터가 배열형태로 도시대기인 0번째 값을 기준으로 함
+            
+            int miseGrade = Integer.parseInt((String)miseDosi.get("pm10Grade"));
+            double miseValue = Double.parseDouble((String)miseDosi.get("pm10Value"));
+            
+            String rs = WeatherUtil.sendTelegram(WeatherUtil.makeMsg(miseGrade, miseValue));
+            System.out.println("## 미세먼지 종료 ##");
+
+            br.close();
 
 
         }catch (Exception e){
