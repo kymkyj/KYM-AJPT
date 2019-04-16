@@ -91,7 +91,7 @@ public class WeatherParsing {
         
         // 미세먼지 체크
         
-        String sido = "서울";
+        String sido = "서울";  
         
         String urlMise = "http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty?sidoName=" + sido + "&pageNo=1&numOfRows=10&ServiceKey=" + serviceKey + "&ver=1.3&_returnType=json";
         
