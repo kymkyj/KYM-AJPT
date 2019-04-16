@@ -10,7 +10,6 @@ import org.json.simple.JSONObject;
 public class WeatherParsing {
 	public static void main(String[] args) {
 		System.out.println("## 프로그램 시작 ##");
-
 		double gangSu = 0.0;
 
 		// 일기예보 확인
@@ -39,6 +38,7 @@ public class WeatherParsing {
 		JSONObject wt_body = (JSONObject) wt_response.get("body");
 		JSONObject wt_items = (JSONObject) wt_body.get("items");
 		JSONArray wt_item = (JSONArray) wt_items.get("item");
+		System.out.println("## 일기예보 데이터 가져옴 ##");
 
 		String category;
 		JSONObject weather;
@@ -73,6 +73,7 @@ public class WeatherParsing {
 
 		int miseGrade = Integer.parseInt((String) miseDosi.get("pm10Grade"));
 		double miseValue = Double.parseDouble((String) miseDosi.get("pm10Value"));
+		System.out.println("## 미세먼지 데이터 가져옴 ##");
 
 		WeatherUtil.sendTelegram(WeatherUtil.makeMsg(gangSu, miseGrade, miseValue));
 

@@ -2,7 +2,6 @@ package com.weather;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 
@@ -46,7 +45,7 @@ public class WeatherUtil {
 
             URL url = new URL(telegramUrl + URLEncoder.encode(msg, "UTF8"));
 
-            HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
+            HttpsURLConnection conn =  (HttpsURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 
@@ -65,7 +64,7 @@ public class WeatherUtil {
             result += "우산을 준비하세요! \n";
         }
         
-        result += "오늘의 미세먼지 수치는 " + miseValue + "입니다. \n";
+        result += "오늘의 미세먼지 수치는 " + miseValue + " 이고, 등급은 " + miseGrade + " 입니다. \n" + "ex) 미세먼지 등급 \n" + "[1-매우좋음, 2-좋음, 3-나쁨, 4-매우나쁨] \n";
         
         if(miseGrade >= 3) { 
         	result += "미세먼지가 나쁘니, 마스크를 준비하세요!";
