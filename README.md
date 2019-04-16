@@ -8,6 +8,7 @@
 ## 참고자료 <br>
  1. 오픈 API <br>
  - 공공데이터 (신)동네예보정보조회서비스 <br>
+ - 공공데이터 대기오염정보 조회 서비스 <br>
  
  2. 라이브러리 <br>
  - json 데이터 파싱하기 위한 라이브러리 사용 (json-simple-1.1.jar) <br>
@@ -27,3 +28,6 @@
 
 + github 연동하기 <br>
    <a>https://jwgye.tistory.com/38</a><br>
+   
++ 미세먼지 <br>
+   <a>https://jeong-pro.tistory.com/143</a>
