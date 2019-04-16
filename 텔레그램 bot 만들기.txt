@@ -1,0 +1,29 @@
+Done! Congratulations on your new bot. You will find it at t.me/weather_AJbot. 
+You can now add a description, about section and profile picture for your bot, see /help for a list of commands. 
+By the way, when you've finished creating your cool bot, ping our Bot Support if you want a better username for it. 
+Just make sure the bot is fully operational before you do this.
+
+Use this token to access the HTTP API:
+785529566:AAGJgIYz_uzbcogAVrrUEBjkq9gdxXF1JzU
+Keep your token secure and store it safely, it can be used by anyone to control your bot.
+
+For a description of the Bot API, see this page: https://core.telegram.org/bots/api
+----------------------------------------------------------------------------------------------------------------
+봇 대화창 이름 : AJ Bot
+내 봇 이름 : @AJ_weatherbot
+봇 API (Token값) : 785529566:AAGJgIYz_uzbcogAVrrUEBjkq9gdxXF1JzU
+봇 chat ID : 639995102
+
+봇이 현재 채팅하고 있는 chat ID 확인하는 방법
+https://api.telegram.org/bot785529566:AAGJgIYz_uzbcogAVrrUEBjkq9gdxXF1JzU/getUpdates
+
+{"ok":true,"result":[{"update_id":132359213,
+"message":{"message_id":2,"from":{"id":639995102,"is_bot":false,"first_name":"YOUNGMIN","last_name":"KIM","language_code":"ko"},"chat":{"id":639995102,"first_name":"YOUNGMIN","last_name":"KIM","type":"private"},"date":1555159312,"text":"hello"}},{"update_id":132359214,
+"message":{"message_id":3,"from":{"id":639995102,"is_bot":false,"first_name":"YOUNGMIN","last_name":"KIM","language_code":"ko"},"chat":{"id":639995102,"first_name":"YOUNGMIN","last_name":"KIM","type":"private"},"date":1555159315,"text":"\uc548\ub155"}},{"update_id":132359215,
+"message":{"message_id":4,"from":{"id":639995102,"is_bot":false,"first_name":"YOUNGMIN","last_name":"KIM","language_code":"ko"},"chat":{"id":639995102,"first_name":"YOUNGMIN","last_name":"KIM","type":"private"},"date":1555159317,"text":"hello bot"}}]}
+
+메시지 전송 URL 만들기 - (chat_id와 API 토큰을 이용하여 메시지 전송 URL 만들기)
+https://api.telegram.org/bot785529566:AAGJgIYz_uzbcogAVrrUEBjkq9gdxXF1JzU/sendmessage?chat_id=639995102&text="hi"
+
+봇 정보 조회하기
+https://api.telegram.org/bot785529566:AAGJgIYz_uzbcogAVrrUEBjkq9gdxXF1JzU/getMe
