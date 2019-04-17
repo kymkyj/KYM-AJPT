@@ -34,3 +34,6 @@
    
 + 윈도우 작업스케줄러 사용 <br>
    <a>https://pastimelife.com/1449</a>
+   
++ URL Encoding 관련 <br>
+   <a>https://m.blog.naver.com/PostView.nhn?blogId=javaking75&logNo=220550347402&proxyReferer=https%3A%2F%2Fwww.google.com%2F</a>
