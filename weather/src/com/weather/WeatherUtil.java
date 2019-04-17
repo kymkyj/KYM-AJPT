@@ -42,7 +42,6 @@ public class WeatherUtil {
 	static void sendTelegram(String msg) {
 		try {
 			String telegramUrl = "https://api.telegram.org/bot785529566:AAGJgIYz_uzbcogAVrrUEBjkq9gdxXF1JzU/sendmessage?chat_id=639995102&text=";
-
 			URL url = new URL(telegramUrl + URLEncoder.encode(msg, "UTF8"));
 
 			HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
