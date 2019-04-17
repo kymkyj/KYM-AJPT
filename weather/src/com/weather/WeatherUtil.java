@@ -57,6 +57,7 @@ public class WeatherUtil {
 	}
 
 	static String makeMsg(double gangSu, int miseGrade, double miseValue) {
+		long startTime = System.nanoTime();
 		StringBuilder sb = new StringBuilder();
 		sb.append("오늘의 강수확률은 " + gangSu + "% 입니다. \n");
 
@@ -69,6 +70,9 @@ public class WeatherUtil {
 		if (miseGrade >= 3) {
 			sb.append("미세먼지가 나쁘니, 마스크를 준비하세요!");
 		}
+		long endTime = System.nanoTime();
+		long resultTime = endTime - startTime;
+		System.out.println(resultTime);
 
 		return sb.toString();
 	}
