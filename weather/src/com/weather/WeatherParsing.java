@@ -16,7 +16,7 @@ public class WeatherParsing {
 		final String CATEGORY_POP = "POP";
 
 		// 서울 중구 기준 60 127
-		String nx = "60";
+		String nx = "60"; 
 		String ny = "127";
 
 		Calendar cal = Calendar.getInstance();
