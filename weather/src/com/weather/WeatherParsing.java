@@ -20,8 +20,8 @@ public class WeatherParsing {
 		String ny = "127";
 
 		Calendar cal = Calendar.getInstance();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-		String todayDate = sdf.format(cal.getTime());
+		SimpleDateFormat sdfDate = new SimpleDateFormat("yyyyMMdd");
+		String todayDate = sdfDate.format(cal.getTime());
 
 		String alamTime = "0200"; // 조회하고 싶은 시간대 지정
 		// 0200, 0500, 0800, 1100, 1400, 1700, 2000, 2300 (1일 8회 제한)
@@ -34,17 +34,17 @@ public class WeatherParsing {
 
 		JSONObject obj = WeatherUtil.getJsonObjectByURL(gangsuUrl);
 		
-		JSONObject wt_response = (JSONObject) obj.get("response");
-		JSONObject wt_body = (JSONObject) wt_response.get("body");
-		JSONObject wt_items = (JSONObject) wt_body.get("items");
-		JSONArray wt_item = (JSONArray) wt_items.get("item");
+		JSONObject wtResponse = (JSONObject) obj.get("response");
+		JSONObject wtBody = (JSONObject) wtResponse.get("body");
+		JSONObject wtItems = (JSONObject) wtBody.get("items");
+		JSONArray wtItem = (JSONArray) wtItems.get("item");
 		System.out.println("## 일기예보 데이터 가져옴 ##");
 
 		String category;
 		JSONObject weather;
 
-		for (int i = 0; i < wt_item.size(); i++) {
-			weather = (JSONObject) wt_item.get(i);
+		for (int i = 0; i < wtItem.size(); i++) {
+			weather = (JSONObject) wtItem.get(i);
 			double value = (Double.parseDouble(weather.get("fcstValue").toString()));
 
 			category = (String) weather.get("category");
