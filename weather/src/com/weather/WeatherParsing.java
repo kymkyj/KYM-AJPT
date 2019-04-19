@@ -7,7 +7,7 @@ import java.util.Calendar;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-public class WeatherParsing {
+public class WeatherParsing {  
 	public static void main(String[] args) {
 		System.out.println("## 프로그램 시작 ##");  
 		double gangSu = 0.0;  
