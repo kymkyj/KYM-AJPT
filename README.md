@@ -23,9 +23,10 @@
 + Calendar 클래스 사용 <br>
    <a>http://blog.daum.net/_blog/BlogTypeView.do?blogid=0XrpC&articleno=170&categoryId=0&regdt=20131124203647</a><br>
 
-+ Telegram bot 만들기 <br>
++ Telegram bot 만들기 및 메시지 전송 방법 <br>
    <a>https://krksap.tistory.com/836</a><br>
-
+   <a>https://junemoon.tistory.com/164</a><br>
+   
 + github 연동하기 <br>
    <a>https://jwgye.tistory.com/38</a><br>
    
