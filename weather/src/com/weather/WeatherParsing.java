@@ -10,7 +10,7 @@ import org.json.simple.JSONObject;
 public class WeatherParsing {
 	public static void main(String[] args) {
 		System.out.println("## 프로그램 시작 ##");
-		double gangSu = 0.0;
+		double gangSu = 0.0;  
 
 		// 일기예보 확인
 		final String CATEGORY_POP = "POP";
