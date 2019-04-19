@@ -38,3 +38,6 @@
    
 + URL Encoding 관련 <br>
    <a>https://m.blog.naver.com/PostView.nhn?blogId=javaking75&logNo=220550347402&proxyReferer=https%3A%2F%2Fwww.google.com%2F</a>
+   
++ Http Connection 관련 <br>
+   <a>https://medium.com/@ahn428/java-networking-2-urlconnection-5241bc334bfd</a>
